@@ -40,7 +40,8 @@ def process_order(order, products, customers, tax_rates):
 
     total = discounts["discounted_subtotal"] + tax + shipping
 
-    reserve_inventory(products, order)
+    if len(errors) == 0:
+        reserve_inventory(products, order)
 
     return {
         "order_id": order["id"],
